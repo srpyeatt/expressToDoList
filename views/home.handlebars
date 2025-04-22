@@ -1,0 +1,46 @@
+{{!< layouts/main}}
+
+<h1>Welcome to Basic To-Do!</h1>
+
+<h2>Add New Task</h2>
+<form action="/add_task" method="post">
+    <label>Enter New Task</label>
+    <input type="text" name="task_desc" placeholder="enter task description"/>
+    <input type="submit"/>
+</form>
+
+<h2>Mark Complete</h2>
+<form action="/mark_complete" method="post">
+    <label>Enter Task ID</label>
+    <input type="text" name="task_id" placeholder="enter task id"/>
+    <input type="submit"/>
+</form>
+
+<h2>Mark Incomplete</h2>
+<form action="/mark_incomplete" method="post">
+    <label>Enter Task ID</label>
+    <input type="text" name="task_id" placeholder="enter task id"/>
+    <input type="submit"/>
+</form>
+
+<h2>Tasks:</h2>
+<ul>
+    {{#tasks}}
+    <li>
+        <b>Task {{task_id}}:</b> 
+        <br>
+        Description: {{task_desc}}
+        <br>
+        Completion: 
+        {{#if is_complete}}
+            <i>Complete</i>
+        {{else}}
+            <i>Incomplete</i>
+        {{/if}}
+        </li>
+    {{/tasks}}
+</ul>
+
+<form action="/logout" method="post">
+    <a href="">Logout</a>
+</form>
